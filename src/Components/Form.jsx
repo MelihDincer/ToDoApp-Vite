@@ -1,9 +1,8 @@
 import { useState } from "react";
 
-const Form = () => {
-    const [itemName, setItemName] = useState("aa");
+const Form = ({onAddItem}) => {
+    const [itemName, setItemName] = useState("");
     const [quantity, setQuantity] = useState(1);
-    const [items, setItems] = useState(items);
 
     function handleFormSubmit(e){
         e.preventDefault();
@@ -16,20 +15,23 @@ const Form = () => {
         };
 
         console.log(product);
+
+        onAddItem(product);
+
         setItemName("");
         setQuantity(1);        
     }
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <input type="text" placeholder="Eleman ekle" />
-      <select>
+      <input type="text" placeholder="Eleman ekle" value={itemName} onChange={(e) => setItemName(e.target.value)}/>
+      <select onChange={(e) => setQuantity(e.target.value)}>
         {Array.from({length:10}, (v,i) => i+1).map((num) => (
            <option key={num} value={num}>{num}</option>
         ))}
         
       </select>
-      <button className="btn btn-sm-info"></button>
+      <button type="submit">Ekle</button>
     </form>
   )
 }

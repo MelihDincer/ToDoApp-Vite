@@ -1,7 +1,6 @@
 import ListItem from "./ListItem"
-import { items } from "../items.js"
 
-const List = () => {
+const List = ({items}) => {
   return (
     <div className="list">
     <ul>
