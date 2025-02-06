@@ -11,11 +11,15 @@ const TodoApp = () => {
     setItems((prevItems) => [...prevItems, item])
   }
 
+  function handleDeleteItem(id) {
+    setItems((items) => items.filter((item) => item.id !== id))
+  }
+
   return (
     <div className="container">
       <Header />
       <Form onAddItem={handleAddItem}/>
-      <List items={items}/>
+      <List items={items} onDeleteItem={handleDeleteItem}/>
       <Summary />
     </div>
   );

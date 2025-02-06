@@ -1,13 +1,18 @@
+/* eslint-disable react/prop-types */
 import ListItem from "./ListItem"
 
-const List = ({items}) => {
+const List = ({items, onDeleteItem}) => {
   return (
     <div className="list">
-    <ul>
+      {items.length>0 ? (
+        <ul>
       {items.map((p, index) => (
-        <ListItem item={p} key={index} />
+        <ListItem item={p} key={index} onDeleteItem={onDeleteItem} />
       ))}
     </ul>
+      ) : 
+      (<p>Eleman yok.</p>)}
+    
   </div>
   )
 }
