@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 
 const Form = ({onAddItem}) => {
@@ -25,14 +24,25 @@ const Form = ({onAddItem}) => {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <input type="text" placeholder="Eleman ekle" value={itemName} onChange={(e) => setItemName(e.target.value)}/>
-      <select onChange={(e) => setQuantity(e.target.value)}>
+      <div className="row">
+        <div className="col-9">
+        <input className="form-control" type="text" placeholder="Eleman ekle" value={itemName} onChange={(e) => setItemName(e.target.value)}/>
+
+        </div>
+        <div className="col">
+        <select className="form-select" onChange={(e) => setQuantity(e.target.value)}>
         {Array.from({length:10}, (v,i) => i+1).map((num) => (
            <option key={num} value={num}>{num}</option>
-        ))}
-        
+        ))}      
       </select>
-      <button type="submit">Ekle</button>
+        </div>
+        <div className="col-2">
+        <button id="btnAdd" className="btn btn-primary" type="submit">Ekle</button>
+
+        </div>
+      
+      </div>
+      
     </form>
   )
 }

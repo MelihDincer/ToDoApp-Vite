@@ -1,6 +1,8 @@
-
 const Header = () => {
-  return <h2>TodoApp</h2>;
+  return(
+  <div className="card-header text-center bg-secondary text-white">
+    <h3>TodoApp</h3>
+  </div>);
 };
 
-export default Header
+export default Header;
